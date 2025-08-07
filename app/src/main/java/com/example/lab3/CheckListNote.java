@@ -6,6 +6,15 @@ public class CheckListNote {
     //Attribute
     List<String> itemList;
 
-    //Method
+    //Getter Method
 
+    public List<String> getItemList() {
+        return itemList;
+    }
+
+    //Setter Method
+
+    public void setItemList(List<String> itemList) {
+        this.itemList = itemList;
+    }
 }
