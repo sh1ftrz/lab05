@@ -1,12 +1,10 @@
 package com.example.lab3;
 
-
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -14,46 +12,28 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-public class MainActivity extends AppCompatActivity {
+public class Activity2 extends AppCompatActivity {
 
-    Button aboutMeButton;
-    ImageView logo;
-
-    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_2);
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
 
-
-        logo = findViewById(R.id.imageView);
-        logo.setImageResource(R.drawable.creature);
-
-        aboutMeButton = findViewById(R.id.AboutMe);
-        aboutMeButton.setOnClickListener(new View.OnClickListener() {
+        @SuppressLint({"MissingInflatedId", "LocalSuppress"})
+        Button Back1 = findViewById(R.id.Back1);
+        Back1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                Intent intent = new Intent (MainActivity.this, Activity2.class);
-                startActivity(intent);
+                Intent intentBack = new Intent (Activity2.this,MainActivity.class);
+                startActivity(intentBack);
             }
         });
-
-        Button button3 = findViewById(R.id.NoteStart);
-        button3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                Intent addNote = new Intent (MainActivity.this,AddNoteActivity.class);
-                startActivity(addNote);
-            }
-        });
-
     }
 }

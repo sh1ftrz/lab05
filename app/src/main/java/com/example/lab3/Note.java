@@ -1,14 +1,20 @@
 package com.example.lab3;
 
+import java.util.Date;
+
 import javax.net.ssl.SSLContext;
+
 
 public abstract class Note {
 
+
     // Attribute
     String title;
-    String dateCreated;
+    Date dateCreated;
 
     // Method
-    abstract void display();
 
+    public void setTitle() {
+
+    }
 }

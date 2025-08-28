@@ -1,5 +1,6 @@
 package com.example.lab3;
 
+
 public class TextNote extends Note{
     //Attribute
     String textContent;
@@ -13,8 +14,6 @@ public class TextNote extends Note{
         this.textContent = inputText;
     }
 
-    @Override
-    void display() {
-        System.out.println(title + ":" + textContent + "(" + dateCreated + ")");
-    }
+    String display()
+    {return title+":"+textContent+"("+dateCreated+")";}
 }

@@ -12,6 +12,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Lab3">
         <activity
+            android:name=".AddNoteActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Activity2"
+            android:exported="false" />
+        <activity
+            android:name=".about_me_act1"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
