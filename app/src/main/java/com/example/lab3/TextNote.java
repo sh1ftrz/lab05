@@ -1,19 +1,25 @@
 package com.example.lab3;
 
-
 public class TextNote extends Note{
     //Attribute
-    String textContent;
+    private  String textContent;
 
-    //Getter method
+    //getter method
     public String getTextContent(){
         return textContent;
     }
-    //Setter method
-    public void setTextContent(String inputText){
-        this.textContent = inputText;
+
+    //setter method
+    public void setTextContent(String newContent){
+        this.textContent = newContent;
+
+
     }
 
-    String display()
-    {return title+":"+textContent+"("+dateCreated+")";}
+
+    //Method
+    public String display(){
+        return title+":"+textContent+"("+dateCreated+")";
+        //System.out.println(title+":"+content+"("+createdDate+")");
+    }
 }

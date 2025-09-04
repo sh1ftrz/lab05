@@ -3,7 +3,6 @@ package com.example.lab3;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
-import android.provider.ContactsContract;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -15,17 +14,14 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-import org.w3c.dom.Text;
-
 import java.util.Date;
 
 public class AddNoteActivity extends AppCompatActivity {
 
     Button submitButton;
     Button back2;
-    EditText title,textContent;
-    TextView display;
-
+    EditText title,textContent,userTXT;
+    TextView displayTime;
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,7 +37,9 @@ public class AddNoteActivity extends AppCompatActivity {
         submitButton = findViewById(R.id.SubmitButton);
         title = findViewById(R.id.editTextTitle);
         textContent = findViewById(R.id.editTextContent);
-        display = findViewById(R.id.textView);
+        userTXT = findViewById(R.id.editTextUser);
+        displayTime = findViewById(R.id.TimeDisplayText);
+
 
         submitButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -49,20 +47,27 @@ public class AddNoteActivity extends AppCompatActivity {
                 //Get Data from USER
                 String stringOfTitle = title.getText().toString();
                 String stringOfContent = textContent.getText().toString();
+                String userName = userTXT.getText().toString();
                 Date currentDate = new Date();
+
 
                 //Create data in TextNote class
                 TextNote note = new TextNote();
                 note.title = stringOfTitle;
                 note.setTextContent(stringOfContent);
+
                 note.dateCreated = currentDate;
 
+                TextUser user1 = new TextUser();
+                note.setOwner(user1);
 
-                display.setText(note.display());
+                displayTime.setText(note.display());
             }
         });
 
-        back2 = findViewById(R.id.Back2);
+
+
+        back2 = findViewById(R.id.BackHomeAddNote);
         back2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -71,6 +76,8 @@ public class AddNoteActivity extends AppCompatActivity {
                 startActivity(intentBack);
             }
         });
+
+
 
     }
 }

@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -16,8 +17,11 @@ import androidx.core.view.WindowInsetsCompat;
 
 public class MainActivity extends AppCompatActivity {
 
+    Button displayNoteButton;
     Button aboutMeButton;
-    ImageView logo;
+    ImageView MainLogo;
+    ProgressBar FrontPageBar1;
+    Button NoteEditStart;
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -32,8 +36,8 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-        logo = findViewById(R.id.imageView);
-        logo.setImageResource(R.drawable.creature);
+        MainLogo = findViewById(R.id.imageView);
+        MainLogo.setImageResource(R.drawable.creature);
 
         aboutMeButton = findViewById(R.id.AboutMe);
         aboutMeButton.setOnClickListener(new View.OnClickListener() {
@@ -45,13 +49,43 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        Button button3 = findViewById(R.id.NoteStart);
-        button3.setOnClickListener(new View.OnClickListener() {
+        NoteEditStart = findViewById(R.id.NoteStart);
+        NoteEditStart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
                 Intent addNote = new Intent (MainActivity.this,AddNoteActivity.class);
                 startActivity(addNote);
+            }
+        });
+
+        FrontPageBar1 = findViewById(R.id.progressBarMainPage);
+        FrontPageBar1.setVisibility(View.GONE);
+        displayNoteButton = findViewById(R.id.displayNoteBtn);
+        displayNoteButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                FrontPageBar1.setVisibility(View.VISIBLE);
+                new Thread(() -> {
+                    //delay 2 sec
+                    try {
+                        Thread.sleep(2000);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                    //load data from database
+                    // -
+                    //back to main thread
+                    runOnUiThread(() -> {
+                    //remove progressbar
+                        FrontPageBar1.setVisibility(View.GONE);
+                    //go to DisplayNoteAct
+                        Intent displayNoteAct = new Intent(getApplicationContext(),DisplayNoteActivity.class);
+                        startActivity(displayNoteAct);
+                    });
+                }).start();
+
             }
         });
 

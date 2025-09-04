@@ -2,20 +2,24 @@ package com.example.lab3;
 
 import java.util.List;
 
-
-public class CheckListNote {
+public class CheckListNote extends Note{
     //Attribute
-    List<String> itemList;
+    private List<String> items;
 
-    //Getter Method
-
-    public List<String> getItemList() {
-        return itemList;
+    //getter method
+    private List<String>getItems(){
+        return items;
     }
 
-    //Setter Method
-
-    public void setItemList(List<String> itemList) {
-        this.itemList = itemList;
+    //setter method
+    private void setItems(List<String> newItems){
+        this.items = newItems;
     }
+    public String  getSummary(){
+        // String strItem = //loop for get data from List
+        // return title+":"+textContent+"("+createdDate+")";
+        return title+":"+"("+dateCreated+")";
+    }
+
+
 }
