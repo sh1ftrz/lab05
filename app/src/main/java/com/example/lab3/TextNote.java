@@ -4,6 +4,10 @@ public class TextNote extends Note{
     //Attribute
     private  String textContent;
 
+    public TextNote() {
+        super();
+    }
+
     //getter method
     public String getTextContent(){
         return textContent;
