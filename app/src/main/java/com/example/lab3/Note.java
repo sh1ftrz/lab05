@@ -36,4 +36,9 @@ public class Note {
 
     //System.out.println(title+":"+content+"("+createdDate+")");
 
+    public String display() {
+        return null;
+    }
+
+
 }
